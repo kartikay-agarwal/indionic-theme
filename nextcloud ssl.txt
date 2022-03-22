@@ -1,0 +1,28 @@
+nano /etc/apache2/sites-available/nextcloud.conf
+
+<VirtualHost *:80>
+  ServerName drive.indionic.host
+  ServerAdmin kartikay@indionic.host
+  DocumentRoot /var/www/nextcloud
+  <directory /var/www/nextcloud>
+    Require all granted
+    AllowOverride All
+    Options FollowSymLinks MultiViews
+    SetEnv HOME /var/www/nextcloud
+    SetEnv HTTP_HOME /var/www/nextcloud
+  </directory>
+</VirtualHost>
+
+sudo -u www-data php /var/www/nextcloud/occ config:system:set trusted_domains 2 --value=drive.indionic.host
+
+systemctl restart apache2
+
+sudo apt-get update
+sudo apt-get install software-properties-common
+sudo add-apt-repository universe
+
+apt-get -y install certbot python3-certbot-apache2
+
+sudo certbot --apache
+
+systemctl restart apache2
