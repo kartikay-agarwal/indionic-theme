@@ -1,11 +1,6 @@
-sudo hostnamectl set-hostname nx.nerdytechtips.com
+sudo apt update
 
-
-
-
-sudo apt install apache2
-sudo apt install php
-sudo apt install mariadb-server
+sudo apt install apache2 php mariadb-server
 sudo mysql_secure_installation
 
 
@@ -17,7 +12,7 @@ MariaDB [(none)]> FLUSH PRIVILEGES;
 MariaDB [(none)]> EXIT;
 
 
-sudo apt install apache2 libapache2-mod-php7.4 openssl php-imagick php7.4-common php7.4-curl php7.4-gd php7.4-imap php7.4-intl php7.4-json php7.4-ldap php7.4-mbstring php7.4-mysql php7.4-pgsql php-smbclient php-ssh2 php7.4-sqlite3 php7.4-xml php7.4-zip
+sudo apt install apache2 libapache2-mod-php7.4 openssl php-imagick php7.4-common php7.4-curl php7.4-gd php7.4-imap php7.4-intl php7.4-json php7.4-ldap php7.4-mbstring php7.4-mysql php7.4-pgsql php-ssh2 php7.4-sqlite3 php7.4-xml php7.4-zip
 
 sudo wget https://download.nextcloud.com/server/releases/nextcloud-20.0.1.zip
 
@@ -29,7 +24,7 @@ Copy below
 
 Alias /nextcloud "/var/www/nextcloud/"
 
-<Directory /var/www/owncloud/>
+<Directory /var/www/nextcloud/>
   Options +FollowSymlinks
   AllowOverride All
 
