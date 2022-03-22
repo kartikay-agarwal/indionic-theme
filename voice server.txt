@@ -1,0 +1,22 @@
+sudo apt install coturn
+
+sudo sed -i '/TURNSERVER_ENABLED/c\TURNSERVER_ENABLED=1' /etc/default/coturn
+
+rm /etc/turnserver.conf
+
+nano /etc/turnserver.conf
+
+tls-listening-port=5349
+fingerprint
+use-auth-secret
+static-auth-secret=openssl rand -hex 69
+realm=your.domain.org
+total-quota=100
+bps-capacity=0
+stale-nonce
+cert=/etc/letsencrypt/live/drive.indionic.host/fullchain.pem
+pkey=/etc/letsencrypt/live/drive.indionic.host/privkey.pem
+cipher-list="ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+3DES:DH+3DES:RSA+AES:RSA+3DES:!ADH:!AECDH:!MD5"
+no-multicast-peers
+
+sudo systemctl restart coturn
