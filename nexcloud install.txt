@@ -1,0 +1,52 @@
+sudo hostnamectl set-hostname nx.nerdytechtips.com
+
+
+
+
+sudo apt install apache2
+sudo apt install php
+sudo apt install mariadb-server
+sudo mysql_secure_installation
+
+
+sudo mysql -u root -p
+
+MariaDB [(none)]> CREATE DATABASE nxcloud_db;
+MariaDB [(none)]> GRANT ALL ON nxcloud_db.* TO 'nx_user'@'localhost' IDENTIFIED BY '1234';
+MariaDB [(none)]> FLUSH PRIVILEGES;
+MariaDB [(none)]> EXIT;
+
+
+sudo apt install apache2 libapache2-mod-php7.4 openssl php-imagick php7.4-common php7.4-curl php7.4-gd php7.4-imap php7.4-intl php7.4-json php7.4-ldap php7.4-mbstring php7.4-mysql php7.4-pgsql php-smbclient php-ssh2 php7.4-sqlite3 php7.4-xml php7.4-zip
+
+sudo wget https://download.nextcloud.com/server/releases/nextcloud-20.0.1.zip
+
+sudo unzip nextcloud-20.0.1.zip -d /var/www/
+
+sudo nano /etc/apache2/sites-available/nextcloud.conf
+
+Copy below 
+
+Alias /nextcloud "/var/www/nextcloud/"
+
+<Directory /var/www/owncloud/>
+  Options +FollowSymlinks
+  AllowOverride All
+
+ <IfModule mod_dav.c>
+  Dav off
+ </IfModule>
+
+ SetEnv HOME /var/www/nextcloud
+ SetEnv HTTP_HOME /var/www/nextcloud
+
+</Directory>
+
+sudo a2ensite nextcloud.conf
+sudo a2enmod rewrite headers env dir mime setenvif ssl
+
+
+sudo chmod 775 -R /var/www/nextcloud/
+sudo chown www-data:www-data /var/www/nextcloud/ -R
+
+sudo systemctl restart apache2
