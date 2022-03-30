@@ -1,7 +1,7 @@
 nano /etc/apache2/sites-available/nextcloud.conf
 
 <VirtualHost *:80>
-  ServerName files.indionic.host
+  ServerName file.indionichost.com
   ServerAdmin kartikay@indionic.host
   DocumentRoot /var/www/nextcloud
   <directory /var/www/nextcloud>
@@ -13,7 +13,7 @@ nano /etc/apache2/sites-available/nextcloud.conf
   </directory>
 </VirtualHost>
 
-sudo -u www-data php /var/www/nextcloud/occ config:system:set trusted_domains 2 --value=files.indionic.host
+sudo -u www-data php /var/www/nextcloud/occ config:system:set trusted_domains 2 --value=file.indionichost.com
 
 systemctl restart apache2
 
