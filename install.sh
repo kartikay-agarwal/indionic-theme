@@ -19,3 +19,7 @@ yarn install
 yarn build:production
 
 php artisan route:clear && php artisan cache:clear && php artisan view:clear && php artisan migrate
+
+apt install php8.0-{bz2,gmp}
+
+composer require xpaw/php-minecraft-query
