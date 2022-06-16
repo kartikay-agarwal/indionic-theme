@@ -1,12 +1,14 @@
 cd /var/www/pterodactyl
 
-wget https://raw.githubusercontent.com/kartikay-agarwal/indionic-theme/main/theme.zip
+wget https://raw.githubusercontent.com/kartikay-agarwal/indionic-theme/main/indionic.zip
 
 rm -R app
 rm -R resources
 rm -R routes
 rm -R database
-rm -R tailwind.config.js
+rm -R config
+rm tailwind.config.js
+rm package.json
 
 apt -y install unzip
 unzip theme.zip
