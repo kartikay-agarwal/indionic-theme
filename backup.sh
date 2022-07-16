@@ -16,7 +16,7 @@ mv dbbackup_${THEDATE}.sql /var/lib/_backups/db
 
 # Remove backups older than 3 days
 find /var/lib/_backups/ptero* -mtime +3 -exec rm {} \;
-find /var/www/_backups/db* -mtime +3 -exec rm {} \;
+find /var/lib/_backups/db* -mtime +3 -exec rm {} \;
 
 # Sync to amazon. With the 'delete' option, the files removed from
 # /var/www/_backups will be removed from the bucket as well
