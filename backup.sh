@@ -1,8 +1,8 @@
 #!/bin/sh
 
 THEDATE=`date +%d-%m-%y-%H:%M`
-THEDBUSER="Backup"
-THEDBPW="Backup@#220456"
+THEDBUSER="root"
+THEDBPW="9913808057Aa@"
 
 # zip all files
 zip -r backup_of_${THEDATE}.zip /var/lib/pterodactyl/volumes -P YXdzIGtpIG1hYSBrYSBiaG9zZGE=
