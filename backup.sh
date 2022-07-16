@@ -8,7 +8,8 @@ THEDBPW="9913808057Aa@"
 zip -r backup_of_${THEDATE}.zip /var/lib/pterodactyl/volumes -P YXdzIGtpIG1hYSBrYSBiaG9zZGE=
 
 # export all the db
-mysql -N -e 'show databases' | while read dbname; do mysqldump --complete-insert --routines --triggers --single-transaction "$dbname" > "$dbname".sql; done
+mysql -N -e 'show databases' | while read dbname; do mysqldump --complete-insert --routines --triggers --single-transaction "$dbname_${THEDATE}" > /var/www/_backups/${dbname}_${THEDATE}.sql; done
+zip -r /var/www/_backups/dbbackup_${THEDATE}.zip /var/www/_backups -P YXdzIGtpIG1hYSBrYSBiaG9zZGE=
 #mysqldump -u ${THEDBUSER} -p${THEDBPW} --all-databases > /var/www/_backups/dbbackup_${THEDATE}.sql
 
 # move the zip and db
