@@ -11,8 +11,8 @@ zip -r backup_of_${THEDATE}.zip /var/lib/pterodactyl/volumes -P YXdzIGtpIG1hYSBr
 mysqldump -u ${THEDBUSER} -p${THEDBPW} --all-databases > /var/www/_backups/dbbackup_${THEDATE}.sql
 
 # move the zip and db
-mv backup_of_${THEDATE}.zip /var/lib/_backups/ptero
-mv dbbackup_${THEDATE}.sql /var/lib/_backups/db
+mv /var/lib/pterodactyl/volumes/backup_of_${THEDATE}.zip /var/lib/_backups/ptero
+mv /var/www/_backups/dbbackup_${THEDATE}.sql /var/lib/_backups/db
 
 # Remove backups older than 3 days
 find /var/lib/_backups/ptero* -mtime +3 -exec rm {} \;
