@@ -14,7 +14,7 @@ zip -r /var/www/_backups/dbbackup_${THEDATE}.zip /var/www/_backups -P YXdzIGtpIG
 
 # move the zip and db
 mv backup_of_${THEDATE}.zip /var/lib/_backups/ptero
-mv /var/www/_backups/dbbackup_${THEDATE}.sql /var/lib/_backups/db
+mv /var/www/_backups/dbbackup_${THEDATE}.zip /var/lib/_backups/db
 
 # Remove backups older than 3 days
 find /var/lib/_backups/ptero* -mtime +3 -exec rm {} \;
