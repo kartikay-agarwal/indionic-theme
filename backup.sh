@@ -8,7 +8,7 @@ THEDBPW="9913808057Aa@"
 zip -r backup_of_${THEDATE}.zip /var/lib/pterodactyl/volumes -P YXdzIGtpIG1hYSBrYSBiaG9zZGE=
 
 # export all the db
-mysqldump -u ${THEDBUSER} -p${THEDBPW} --all-databases > /var/www/_backups/dbbackup_${THEDATE}.sql
+mysqldump --all-databases > /var/www/_backups/dbbackup_${THEDATE}.sql
 
 # move the zip and db
 mv /var/lib/pterodactyl/volumes/backup_of_${THEDATE}.zip /var/lib/_backups/ptero
