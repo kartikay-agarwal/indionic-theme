@@ -12,7 +12,7 @@ for i in */; do zip -r "${i%/}.zip" "$i"; done
 
 for i in *.zip; do mv "${i%}" /var/www/_backups/ptero; done
 
-zip -r /var/www/_backups/pterobackup_of_${THEDATE}.zip /var/www/_backups/ptero -P YXdzIGtpIG1hYSBrYSBiaG9zZGE=
+zip -r /var/www/_backups/ptero/backup_of_${THEDATE}.zip /var/www/_backups/ptero -P YXdzIGtpIG1hYSBrYSBiaG9zZGE=
 
 # export all the db
 cd ~
