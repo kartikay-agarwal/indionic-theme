@@ -1,6 +1,6 @@
 #!/bin/sh
 
-THEDATE=`date +%d-%m-%y-%H:%M`
+THEDATE=`date +%d-%m-%y-%H`
 THEDBUSER="root"
 THEDBPW="9913808057Aa@"
 
