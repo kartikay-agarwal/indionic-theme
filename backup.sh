@@ -1,6 +1,6 @@
 #!/bin/sh
 
-THEDATE=`date +%d-%m-%y-%H:%M`
+THEDATE=`date +%d-%m-%y-%H`
 THEDBUSER="root"
 THEDBPW="9913808057Aa@"
 
@@ -12,12 +12,12 @@ for i in */; do zip -r "${i%/}.zip" "$i"; done
 
 for i in *.zip; do mv "${i%}" /var/www/_backups/ptero; done
 
-zip -r backup_of_${THEDATE}.zip /var/www/_backups/ptero -P YXdzIGtpIG1hYSBrYSBiaG9zZGE=
+zip -r /var/www/_backups/ptero/backup_of_${THEDATE}.zip /var/www/_backups/ptero -P YXdzIGtpIG1hYSBrYSBiaG9zZGE=
 
 # export all the db
 cd ~
-mysql -N -e 'show databases' | while read dbname; do mysqldump --complete-insert --routines --triggers --single-transaction "$dbname" > /var/www/_backups/${dbname}_${THEDATE}.sql; done
-zip -r /var/www/_backups/dbbackup_${THEDATE}.zip /var/www/_backups/db -P YXdzIGtpIG1hYSBrYSBiaG9zZGE=
+mysql -N -e 'show databases' | while read dbname; do mysqldump --complete-insert --routines --triggers --single-transaction "$dbname" > /var/www/_backups/db/${dbname}_${THEDATE}.sql; done
+zip -r /var/www/_backups/db/dbbackup_${THEDATE}.zip /var/www/_backups/db -P YXdzIGtpIG1hYSBrYSBiaG9zZGE=
 #mysqldump -u ${THEDBUSER} -p${THEDBPW} --all-databases > /var/www/_backups/dbbackup_${THEDATE}.sql
 
 # move the zip and db
@@ -25,7 +25,7 @@ mv /var/www/_backups/ptero/backup_of_${THEDATE}.zip /var/lib/_backups/ptero
 mv /var/www/_backups/db/dbbackup_${THEDATE}.zip /var/lib/_backups/db
 
 #clear the extra db backups
-rm -r /var/www/_backups && mkdir /var/www/_backups/ptero && mkdir /var/www/_backups/db
+#rm -r /var/www/_backups && && mkdir /var/www/_backups/ && mkdir /var/www/_backups/ptero && mkdir /var/www/_backups/db
 
 # Remove backups older than 3 days
 find /var/lib/_backups/ptero* -mtime +3 -exec rm {} \;
