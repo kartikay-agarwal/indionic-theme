@@ -1,7 +1,8 @@
 #!/bin/sh
 
 THEDATE=`date +%d-%m-%y-%H:%M`
-THEDBUSER="root"
+THEDBUSER="root
+
 THEDBPW="9913808057Aa@"
 
 # zip all files
