@@ -21,8 +21,8 @@ zip -r /var/www/_backups/dbbackup_${THEDATE}.zip /var/www/_backups/db -P YXdzIGt
 #mysqldump -u ${THEDBUSER} -p${THEDBPW} --all-databases > /var/www/_backups/dbbackup_${THEDATE}.sql
 
 # move the zip and db
-mv /var/www/_backups/backup_of_${THEDATE}.zip /var/lib/_backups/ptero
-mv /var/www/_backups/dbbackup_${THEDATE}.zip /var/lib/_backups/db
+mv /var/www/_backups/ptero/backup_of_${THEDATE}.zip /var/lib/_backups/ptero
+mv /var/www/_backups/db/dbbackup_${THEDATE}.zip /var/lib/_backups/db
 
 #clear the extra db backups
 rm -r /var/www/_backups && mkdir /var/www/_backups/ptero && mkdir /var/www/_backups/db
