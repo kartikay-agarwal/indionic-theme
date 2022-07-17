@@ -25,7 +25,7 @@ mv /var/www/_backups/ptero/backup_of_${THEDATE}.zip /var/lib/_backups/ptero
 mv /var/www/_backups/db/dbbackup_${THEDATE}.zip /var/lib/_backups/db
 
 #clear the extra db backups
-rm -r /var/www/_backups && mkdir /var/www/_backups/ptero && mkdir /var/www/_backups/db
+#rm -r /var/www/_backups && && mkdir /var/www/_backups/ && mkdir /var/www/_backups/ptero && mkdir /var/www/_backups/db
 
 # Remove backups older than 3 days
 find /var/lib/_backups/ptero* -mtime +3 -exec rm {} \;
