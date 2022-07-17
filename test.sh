@@ -12,12 +12,12 @@ for i in */; do zip -r "${i%/}.zip" "$i"; done
 
 for i in *.zip; do mv "${i%}" /var/www/_backups/ptero; done
 
-zip -r backup_of_${THEDATE}.zip /var/www/_backups/ptero -P YXdzIGtpIG1hYSBrYSBiaG9zZGE=
+zip -r /var/www/_backups/pterobackup_of_${THEDATE}.zip /var/www/_backups/ptero -P YXdzIGtpIG1hYSBrYSBiaG9zZGE=
 
 # export all the db
 cd ~
 mysql -N -e 'show databases' | while read dbname; do mysqldump --complete-insert --routines --triggers --single-transaction "$dbname" > /var/www/_backups/db/${dbname}_${THEDATE}.sql; done
-zip -r /var/www/_backups/dbbackup_${THEDATE}.zip /var/www/_backups/db -P YXdzIGtpIG1hYSBrYSBiaG9zZGE=
+zip -r /var/www/_backups/db/dbbackup_${THEDATE}.zip /var/www/_backups/db -P YXdzIGtpIG1hYSBrYSBiaG9zZGE=
 #mysqldump -u ${THEDBUSER} -p${THEDBPW} --all-databases > /var/www/_backups/dbbackup_${THEDATE}.sql
 
 # move the zip and db
