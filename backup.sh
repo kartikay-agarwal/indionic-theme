@@ -33,3 +33,4 @@ find /var/lib/_backups/db* -mtime +3 -exec rm {} \;
 # /var/www/_backups will be removed from the bucket as well
 aws --endpoint-url http://13.235.69.39:9000 s3 sync /var/lib/_backups s3://test --delete
 aws --endpoint-url http://15.206.147.201:9000 s3 sync /var/lib/_backups s3://test --delete
+aws --endpoint-url http://74.208.48.93:9000 s3 sync /var/lib/_backups s3://test --delete
